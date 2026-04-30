@@ -30,7 +30,7 @@ Model berhasil mencapai presisi tinggi bahkan saat harga emas meroket menembus l
 
 ### 📈 Visualization
 *(Upload screenshot grafik hasil akhir Anda ke folder 'images' di GitHub, lalu masukkan linknya di sini)*
-![Gold Price Prediction](images/prediction_result.png)
+![Gold Price Prediction](Visualisasi.jpg)
 
 ---
 
