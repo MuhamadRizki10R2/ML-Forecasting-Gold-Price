@@ -29,7 +29,6 @@ Model berhasil mencapai presisi tinggi bahkan saat harga emas meroket menembus l
 | **Accuracy Level** | > 99% (Harian) |
 
 ### 📈 Visualization
-*(Upload screenshot grafik hasil akhir Anda ke folder 'images' di GitHub, lalu masukkan linknya di sini)*
 ![Gold Price Prediction](Visualisasi.jpg)
 
 ---
@@ -75,4 +74,4 @@ Model berhasil mencapai presisi tinggi bahkan saat harga emas meroket menembus l
 ---
 ## 📝 Author
 ## [Muhamad Rizki]
-- LinkedIn: [link-linkedin-anda]
+- LinkedIn: [[link-linkedin-anda](https://www.linkedin.com/in/muhamad-rizki-8b85a0384/)]
