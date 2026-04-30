@@ -60,19 +60,19 @@ Model berhasil mencapai presisi tinggi bahkan saat harga emas meroket menembus l
 ```
 
 ---
-##💡 How to Run
+## 💡 How to Run
 1. Buka Google Colab.
 2. Upload file gold_price_forecasting.ipynb.
 3. Unggah dataset gold_price_forecasting_dataset.csv saat diminta.
 4. Jalankan seluruh cells untuk melihat proses training dan hasil visualisasi.
 
 ---
-##👨‍💻 Best Practices Applied
+## 👨‍💻 Best Practices Applied
 - Anti Data-Leakage: Proses scaling hanya dilakukan berdasarkan statistik data training.
 - Stationarity Transformation: Menggunakan log-returns/daily returns untuk stabilitas numerik.
 - 1-Step-Ahead Validation: Simulasi prediksi dunia nyata untuk kebutuhan day trading.
 
 ---
-##📝 Author
-[Muhamad Rizki]
+## 📝 Author
+## [Muhamad Rizki]
 - LinkedIn: [link-linkedin-anda]
