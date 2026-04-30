@@ -1,115 +1,78 @@
-📈 Gold Price Forecasting: A Professional Quant Approach
-![alt text](https://img.shields.io/badge/Python-3.8%2B-blue)
+# 📈 Gold Price Forecasting using LSTM (Quantitative Finance Approach)
 
-![alt text](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+![Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)
 
-![alt text](https://img.shields.io/badge/License-MIT-yellow.svg)
+Proyek ini merupakan sistem peramalan harga emas (Gold Futures) tingkat lanjut menggunakan arsitektur **Deep Learning LSTM (Long Short-Term Memory)**. Berbeda dengan model prediksi harga konvensional, proyek ini menerapkan teknik **Quantitative Finance** untuk mengatasi masalah volatilitas ekstrem dan data non-stasioner.
 
-Proyek ini mendemonstrasikan implementasi Deep Learning (LSTM) untuk memprediksi harga emas (Gold Futures GC=F) menggunakan pendekatan finansial profesional. Alih-alih memprediksi harga absolut secara langsung, model ini memprediksi Daily Returns untuk memastikan stasioneritas data, menghasilkan akurasi prediksi yang sangat tinggi.
+---
 
-🎯 Key Highlights
-Metode Quant: Mengubah data Non-Stationary (Harga) menjadi Stationary (Returns) untuk performa model yang stabil.
+## 🚀 Key Innovation: From Price to Returns
+Banyak model peramalan gagal saat harga aset menembus **All-Time High (ATH)**, menghasilkan grafik prediksi yang datar (*flatline*). 
 
-Multivariate Forecasting: Menggunakan 15+ fitur termasuk indikator teknikal: RSI, MACD, Bollinger Bands, Moving Averages, dan Volatility.
+Dalam proyek ini, saya mengimplementasikan solusi **Stationarity**:
+1. **Target Prediksi:** Alih-alih memprediksi harga absolut ($), model ini memprediksi **Daily Returns** (persentase perubahan harian).
+2. **Data Reconstruction:** Hasil prediksi persentase kemudian direkonstruksi kembali menjadi harga nominal menggunakan harga historis terakhir.
+3. **Multivariate Input:** Menggunakan 15+ fitur termasuk Volume dan Indikator Teknikal (RSI, MACD, Bollinger Bands) untuk menangkap pola momentum pasar.
 
-Pencegahan Data Leakage: Implementasi StandardScaler yang ketat (hanya di-fit pada data training).
+---
 
-Akurasi Tinggi: Mencapai Mean Absolute Error (MAE) sebesar ~
-39
-∗
-∗
-p
-a
-d
-a
-h
-a
-r
-g
-a
-a
-s
-e
-t
-s
-e
-n
-i
-l
-a
-i
-∗
-∗
-39∗∗padahargaasetsenilai∗∗
-5,000+.
+## 📊 Results & Performance
+Model berhasil mencapai presisi tinggi bahkan saat harga emas meroket menembus level ekstrem $5.000+:
 
-📂 Dataset
-Dataset bersumber dari Yahoo Finance via Kaggle, mencakup 5 tahun data historis harian dengan kolom:
+| Metric | Value |
+| :--- | :--- |
+| **Mean Absolute Error (MAE)** | ~$39.64 |
+| **Root Mean Squared Error (RMSE)** | ~$66.32 |
+| **Accuracy Level** | > 99% (Harian) |
 
-OHLCV: Open, High, Low, Close, Volume.
+### 📈 Visualization
+*(Upload screenshot grafik hasil akhir Anda ke folder 'images' di GitHub, lalu masukkan linknya di sini)*
+![Gold Price Prediction](images/prediction_result.png)
 
-Technical Indicators: ma_7, ma_30, rsi, macd, bb_upper, bb_lower, dll.
+---
 
-Target: daily_return (Persentase perubahan harian).
+## 🛠️ Tech Stack
+- **Languages:** Python
+- **Libraries:** TensorFlow, Keras, Pandas, NumPy, Scikit-Learn, Matplotlib
+- **Tools:** Google Colab
+- **Model:** Stacked LSTM with Dropout Layers & Early Stopping
 
-🛠️ Tech Stack
-Languages: Python
+---
 
-Libraries: TensorFlow/Keras, Pandas, NumPy, Scikit-Learn, Matplotlib, Joblib.
+## ⚙️ Model Architecture
+- **Look-back Period:** 60 Days (Model melihat 2 bulan ke belakang untuk memprediksi hari esok).
+- **LSTM Layers:** 2 Hidden Layers (50 units each).
+- **Regularization:** Dropout (0.2) untuk mencegah overfitting.
+- **Optimization:** Adam Optimizer dengan Early Stopping callback untuk efisiensi training.
 
-Platform: Google Colab.
+---
 
-🧠 Model Architecture (LSTM)
-Model dibangun menggunakan arsitektur Recurrent Neural Network khusus memori jangka panjang:
+## 📂 Project Structure
+```text
+├── gold_price_forecasting.ipynb   # Notebook utama (Gunakan di Google Colab)
+├── gold_price_lstm_model.h5       # Model yang sudah dilatih
+├── feature_scaler.pkl             # Scaler fitur (Normalisasi)
+├── target_scaler.pkl              # Scaler target (Normalisasi)
+└── README.md                      # Dokumentasi proyek
+```
 
-LSTM Layer 1: 50 units (Return Sequences).
+---
+##💡 How to Run
+1. Buka Google Colab.
+2. Upload file gold_price_forecasting.ipynb.
+3. Unggah dataset gold_price_forecasting_dataset.csv saat diminta.
+4. Jalankan seluruh cells untuk melihat proses training dan hasil visualisasi.
 
-Dropout: 0.2 (Mencegah Overfitting).
+---
+##👨‍💻 Best Practices Applied
+- Anti Data-Leakage: Proses scaling hanya dilakukan berdasarkan statistik data training.
+- Stationarity Transformation: Menggunakan log-returns/daily returns untuk stabilitas numerik.
+- 1-Step-Ahead Validation: Simulasi prediksi dunia nyata untuk kebutuhan day trading.
 
-LSTM Layer 2: 50 units.
-
-Dropout: 0.2.
-
-Dense Layers: 25 units & 1 unit (Output).
-
-Early Stopping: Berhenti otomatis jika Validation Loss tidak lagi membaik.
-
-📊 Results & Visualization
-Setelah memprediksi Daily Returns, model merekonstruksi harga menggunakan rumus:
-Price_t = Price_{t-1} * (1 + Predicted_Return_t)
-
-Prediksi vs Aktual
-![alt text](https://github.com/USERNAME/REPO_NAME/raw/main/hasil_prediksi.png)
-
-(Saran: Upload screenshot grafik hijau Anda ke folder repo lalu ganti link gambar di atas)
-
-Performance Metrics:
-Mean Absolute Error (MAE): $39.64
-
-Root Mean Squared Error (RMSE): $66.36
-
-🚀 How to Run
-Clone repository ini:
-
-code
-Bash
-git clone https://github.com/USERNAME/REPO_NAME.git
-Buka file .ipynb di Google Colab.
-
-Upload dataset gold_price_forecasting_dataset.csv.
-
-Run semua cell.
-
-💡 Professional Insights & Best Practices
-Stationarity is King: Neural Networks kesulitan memprediksi harga yang terus naik tanpa batas. Dengan memprediksi Return, model belajar pola volatilitas yang jauh lebih konsisten.
-
-1-Step-Ahead Forecasting: Model ini menggunakan data aktual hari kemarin untuk memprediksi hari ini, menjadikannya sangat relevan untuk strategi Day Trading.
-
-Scalability: File feature_scaler.pkl disimpan secara terpisah agar model siap digunakan untuk data baru di masa depan (Production-Ready).
-
-👨‍💻 Author
-[Nama Anda]
-
-LinkedIn: [link-linkedin-anda]
-
-Kaggle: [link-kaggle-anda]
+---
+##📝 Author
+[Muhamad Rizki]
+- LinkedIn: [link-linkedin-anda]
